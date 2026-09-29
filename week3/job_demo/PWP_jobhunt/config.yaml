@@ -1,0 +1,205 @@
+
+# jobhunt configuration
+# Tailored for Sandeep Kumar — Entry-Level AI/ML & Software Engineering
+#
+# Primary targets:
+# AI Engineer | ML Engineer | GenAI Engineer | Python Developer
+# Backend Engineer | Data Analyst | Data Engineer
+#
+# Background:
+# B.Tech CSE (IoT, Cybersecurity, Blockchain)
+# CGPA: 7.18
+# Python | Java | SQL | FastAPI | Flask | Scikit-learn
+# Pandas | NumPy | LLMs | RAG | AI Agents | LangGraph
+# MySQL | Docker | Git | REST APIs
+#
+# Experience:
+# Production Engineer — SYNCHROTECH EQUIPMENTS PVT. LTD.
+# Open-Source Contributor — ECWoC 2026
+#
+# Projects:
+# HireMeAI | PreBreach Shield | GeoAdhikar
+# Heart Disease Prediction | Sentinel-R-V4 | VAYU-SETU
+
+# ---------------------------------------------------------------------------
+# FILTERS
+# ---------------------------------------------------------------------------
+
+filters:
+
+  # Title regexes, matched case-insensitively against job title only.
+  # A title must match at least one include AND zero excludes.
+
+  include_titles:
+
+    # Software engineering and backend development
+    - '\b(software|backend|back-end|python|java|application|api|full.stack)\b.*\b(engineer|developer)\b'
+    - '\b(engineer|developer)\b.*\b(backend|back-end|software|python|java)\b'
+    - '\bsoftware development engineer\b'
+    - '\bsoftware engineer\b'
+    - '\bbackend engineer\b'
+    - '\bbackend developer\b'
+    - '\bpython developer\b'
+    - '\bjava developer\b'
+    - '\bfull.stack developer\b'
+    - '\bassociate software engineer\b'
+    - '\bgraduate software engineer\b'
+    - '\bjunior software engineer\b'
+
+    # Artificial Intelligence and Machine Learning
+    - '\b(ai|artificial intelligence|machine learning|ml|deep learning)\b.*\b(engineer|developer|specialist)\b'
+    - '\b(engineer|developer|specialist)\b.*\b(ai|artificial intelligence|machine learning|ml)\b'
+    - '\bai engineer\b'
+    - '\bai developer\b'
+    - '\bmachine learning engineer\b'
+    - '\bml engineer\b'
+    - '\bjunior machine learning engineer\b'
+    - '\bassociate machine learning engineer\b'
+    - '\bapplied ai engineer\b'
+    - '\bapplied machine learning engineer\b'
+    - '\bai application engineer\b'
+    - '\bai solutions engineer\b'
+
+    # Generative AI, LLM and agentic AI
+    - '\b(generative ai|genai|gen ai|llm|large language model|rag|agentic ai)\b.*\b(engineer|developer|specialist)\b'
+    - '\b(engineer|developer|specialist)\b.*\b(generative ai|genai|gen ai|llm|rag|agentic ai)\b'
+    - '\bllm engineer\b'
+    - '\bgenerative ai engineer\b'
+    - '\bgenai engineer\b'
+    - '\bprompt engineer\b'
+    - '\bai agent engineer\b'
+    - '\bconversational ai engineer\b'
+
+    # Data engineering and analytics
+    - '\b(data|analytics|business intelligence|bi)\b.*\b(engineer|analyst|developer)\b'
+    - '\b(engineer|analyst|developer)\b.*\b(data|analytics|business intelligence)\b'
+    - '\bdata analyst\b'
+    - '\bjunior data analyst\b'
+    - '\bassociate data analyst\b'
+    - '\bdata engineer\b'
+    - '\bjunior data engineer\b'
+    - '\bassociate data engineer\b'
+    - '\banalytics engineer\b'
+    - '\bbi developer\b'
+    - '\bbusiness intelligence analyst\b'
+    - '\bpower bi developer\b'
+    - '\bsql developer\b'
+
+    # Data science and applied ML
+    - '\bdata scientist\b'
+    - '\bjunior data scientist\b'
+    - '\bassociate data scientist\b'
+    - '\bdata science engineer\b'
+    - '\bdecision science analyst\b'
+    - '\bapplied scientist\b'
+
+    # Cloud, platform and infrastructure
+    - '\b(cloud|platform|infrastructure|devops)\b.*\b(engineer|developer)\b'
+    - '\b(engineer|developer)\b.*\b(cloud|platform|infrastructure|devops)\b'
+    - '\bjunior devops engineer\b'
+    - '\bcloud engineer\b'
+
+    # Entry-level and graduate hiring
+    - '\bgraduate engineer trainee\b'
+    - '\bengineering graduate\b'
+    - '\bentry.level software engineer\b'
+    - '\bentry.level ai engineer\b'
+    - '\bassociate engineer\b'
+    - '\btechnical associate\b'
+    - '\bmember of technical staff\b'
+
+  # Anything matching these is dropped even if an include matched.
+
+  exclude_titles:
+
+    # Roles requiring experience beyond current career stage
+    - '\b(staff|principal|distinguished|fellow|architect)\b'
+    - '\bsenior\b'
+    - '\b(lead|tech lead|team lead)\b'
+    - '\b(director|vp|vice president|head of|chief|cto)\b'
+    - '\b(manager|management)\b'
+
+    # Internships and training programs
+    - '\b(intern|internship|apprentice|trainee)\b'
+
+    # Non-technical or unrelated positions
+    - '\b(sales|account executive|marketing|recruit|customer support|customer success)\b'
+    - '\b(technical support|help desk|desktop support)\b'
+    - '\b(frontend|front-end|ios|android|mobile|game designer|graphic designer)\b'
+    - '\bmanual tester\b'
+    - '\bnon.technical\b'
+
+    # Research-only roles that typically require advanced academic credentials
+    - '\b(research scientist|research fellow|postdoctoral)\b'
+
+  # Substrings matched against "<location> <title>", case-insensitive.
+  # India-first search, with flexibility for remote opportunities.
+
+  locations:
+    - india
+    - pune
+    - pimpri
+    - chinchwad
+    - bengaluru
+    - bangalore
+    - hyderabad
+    - mumbai
+    - navi mumbai
+    - thane
+    - chennai
+    - gurugram
+    - gurgaon
+    - noida
+    - delhi
+    - kolkata
+    - asansol
+    - patna
+    - remote
+    - work from home
+    - anywhere
+
+  # Allow remote opportunities even when location is not explicitly India.
+  allow_remote: true
+
+  # Drop postings older than this.
+  # A shorter window prioritizes currently active hiring.
+
+  max_age_days: 30
+
+# ---------------------------------------------------------------------------
+# LLM STAGES
+# ---------------------------------------------------------------------------
+
+# Jobs per screening call.
+# Moderate batch size balances cost and screening accuracy.
+
+screen_batch_size: 8
+
+# JD truncation for screening.
+# Retain enough text to assess responsibilities, requirements and eligibility.
+
+screen_jd_chars: 2500
+
+# JD truncation for drafting.
+# More context helps tailor applications to technical requirements.
+
+draft_jd_chars: 8000
+
+# Only draft applications scoring at least 7/10.
+# Score should reflect actual skill match, experience level and project relevance.
+
+score_threshold: 5.5
+
+# Maximum expensive draft calls per run.
+
+max_per_digest: 5
+
+# ---------------------------------------------------------------------------
+# PATHS
+# ---------------------------------------------------------------------------
+
+companies_file: companies.yaml
+profile_file: profile.json
+seen_file: seen.json
+digest_file: out/digest.html
+tracker_csv: out/tracker.csv
